@@ -1,0 +1,1914 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Maicol">
+    <meta name="description" content="Una pagina donde puedes programar diferentes eventos y estar a la orden del dia con todos ellos">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VusEvents</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- header fuera del main ya que su existencia sera permanente -->
+    <header class="header" id="header">
+        <button class="botonMenu botonHeader" id="botonMenu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+        </button>
+        <h1 class="titulo" id="titulo">VusEvents</h1>
+        <button class="botonDia botonHeader" id="botonDia">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-sun-fill" viewBox="0 0 16 16">
+                <path d="M11.473 11a4.5 4.5 0 0 0-8.72-.99A3 3 0 0 0 3 16h8.5a2.5 2.5 0 0 0 0-5h-.027z"/>
+                <path d="M10.5 1.5a.5.5 0 0 0-1 0v1a.5.5 0 0 0 1 0v-1zm3.743 1.964a.5.5 0 1 0-.707-.707l-.708.707a.5.5 0 0 0 .708.708l.707-.708zm-7.779-.707a.5.5 0 0 0-.707.707l.707.708a.5.5 0 1 0 .708-.708l-.708-.707zm1.734 3.374a2 2 0 1 1 3.296 2.198c.199.281.372.582.516.898a3 3 0 1 0-4.84-3.225c.352.011.696.055 1.028.129zm4.484 4.074c.6.215 1.125.59 1.522 1.072a.5.5 0 0 0 .039-.742l-.707-.707a.5.5 0 0 0-.854.377zM14.5 6.5a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"/>
+              </svg>
+        </button>
+        <button class="botonNoche botonHeader" id="botonNoche">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-moon-fill" viewBox="0 0 16 16">
+                <path d="M11.473 11a4.5 4.5 0 0 0-8.72-.99A3 3 0 0 0 3 16h8.5a2.5 2.5 0 0 0 0-5h-.027z"/>
+                <path d="M11.286 1.778a.5.5 0 0 0-.565-.755 4.595 4.595 0 0 0-3.18 5.003 5.46 5.46 0 0 1 1.055.209A3.603 3.603 0 0 1 9.83 2.617a4.593 4.593 0 0 0 4.31 5.744 3.576 3.576 0 0 1-2.241.634c.162.317.295.652.394 1a4.59 4.59 0 0 0 3.624-2.04.5.5 0 0 0-.565-.755 3.593 3.593 0 0 1-4.065-5.422z"/>
+              </svg>
+        </button>
+    </header>
+    <!-- menu desplegable al apretar el boton del menu del header  -->
+    <div class="contenedorHeader" id="contenedorHeader">
+        <div class="blanco" id="blanco">
+            <button class="botonCierre" id="botonCierre">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="46" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                  </svg>
+            </button>
+            <hr>
+            <ul class="listaOpciones" id="listaOpciones">
+                <li class="" id="botonAbrirEventoDeportes">
+                    <button class="botonDeporte" id="boton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dribbble" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 0C3.584 0 0 3.584 0 8s3.584 8 8 8c4.408 0 8-3.584 8-8s-3.592-8-8-8zm5.284 3.688a6.802 6.802 0 0 1 1.545 4.251c-.226-.043-2.482-.503-4.755-.217-.052-.112-.096-.234-.148-.355-.139-.33-.295-.668-.451-.99 2.516-1.023 3.662-2.498 3.81-2.69zM8 1.18c1.735 0 3.323.65 4.53 1.718-.122.174-1.155 1.553-3.584 2.464-1.12-2.056-2.36-3.74-2.551-4A6.95 6.95 0 0 1 8 1.18zm-2.907.642A43.123 43.123 0 0 1 7.627 5.77c-3.193.85-6.013.833-6.317.833a6.865 6.865 0 0 1 3.783-4.78zM1.163 8.01V7.8c.295.01 3.61.053 7.02-.971.199.381.381.772.555 1.162l-.27.078c-3.522 1.137-5.396 4.243-5.553 4.504a6.817 6.817 0 0 1-1.752-4.564zM8 14.837a6.785 6.785 0 0 1-4.19-1.44c.12-.252 1.509-2.924 5.361-4.269.018-.009.026-.009.044-.017a28.246 28.246 0 0 1 1.457 5.18A6.722 6.722 0 0 1 8 14.837zm3.81-1.171c-.07-.417-.435-2.412-1.328-4.868 2.143-.338 4.017.217 4.251.295a6.774 6.774 0 0 1-2.924 4.573z"/>
+                          </svg>
+                    </button>
+                    <p>Deportes</p>
+                </li>
+                <li class="" id="botonAbrirEventoPolitica">
+                    <button class="botonPolitica" id="boton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ubuntu" viewBox="0 0 16 16">
+                            <path d="M2.273 9.53a2.273 2.273 0 1 0 0-4.546 2.273 2.273 0 0 0 0 4.547Zm9.467-4.984a2.273 2.273 0 1 0 0-4.546 2.273 2.273 0 0 0 0 4.546ZM7.4 13.108a5.535 5.535 0 0 1-3.775-2.88 3.273 3.273 0 0 1-1.944.24 7.4 7.4 0 0 0 5.328 4.465c.53.113 1.072.169 1.614.166a3.253 3.253 0 0 1-.666-1.9 5.639 5.639 0 0 1-.557-.091Zm3.828 2.285a2.273 2.273 0 1 0 0-4.546 2.273 2.273 0 0 0 0 4.546Zm3.163-3.108a7.436 7.436 0 0 0 .373-8.726 3.276 3.276 0 0 1-1.278 1.498 5.573 5.573 0 0 1-.183 5.535 3.26 3.26 0 0 1 1.088 1.693ZM2.098 3.998a3.28 3.28 0 0 1 1.897.486 5.544 5.544 0 0 1 4.464-2.388c.037-.67.277-1.313.69-1.843a7.472 7.472 0 0 0-7.051 3.745Z"/>
+                          </svg>
+                    </button>
+                    <p>Política</p>
+                </li>
+                <li class="" id="botonAbrirEventoFestividades">
+                    <button class="botonFestividades" id="boton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-week-fill" viewBox="0 0 16 16">
+                            <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM9.5 7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm3 0h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zM2 10.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3.5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z"/>
+                          </svg>
+                    </button>
+                    <p>Festividades</p>
+                </li>
+                <li class="" id="botonAbrirEventoMusica">
+                    <button class="botonMusica" id="boton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-headset" viewBox="0 0 16 16">
+                            <path d="M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5z"/>
+                          </svg>
+                    </button>
+                    <p>Música</p>
+                </li>
+                <li class="" id="botonAbrirEventoJuegos">
+                    <button class="botonJuegos" id="boton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-xbox" viewBox="0 0 16 16">
+                            <path d="M7.202 15.967a7.987 7.987 0 0 1-3.552-1.26c-.898-.585-1.101-.826-1.101-1.306 0-.965 1.062-2.656 2.879-4.583C6.459 7.723 7.897 6.44 8.052 6.475c.302.068 2.718 2.423 3.622 3.531 1.43 1.753 2.088 3.189 1.754 3.829-.254.486-1.83 1.437-2.987 1.802-.954.301-2.207.429-3.239.33Zm-5.866-3.57C.589 11.253.212 10.127.03 8.497c-.06-.539-.038-.846.137-1.95.218-1.377 1.002-2.97 1.945-3.95.401-.417.437-.427.926-.263.595.2 1.23.638 2.213 1.528l.574.519-.313.385C4.056 6.553 2.52 9.086 1.94 10.653c-.315.852-.442 1.707-.306 2.063.091.24.007.15-.3-.319Zm13.101.195c.074-.36-.019-1.02-.238-1.687-.473-1.443-2.055-4.128-3.508-5.953l-.457-.575.494-.454c.646-.593 1.095-.948 1.58-1.25.381-.237.927-.448 1.161-.448.145 0 .654.528 1.065 1.104a8.372 8.372 0 0 1 1.343 3.102c.153.728.166 2.286.024 3.012a9.495 9.495 0 0 1-.6 1.893c-.179.393-.624 1.156-.82 1.404-.1.128-.1.127-.043-.148ZM7.335 1.952c-.67-.34-1.704-.705-2.276-.803a4.171 4.171 0 0 0-.759-.043c-.471.024-.45 0 .306-.358A7.778 7.778 0 0 1 6.47.128c.8-.169 2.306-.17 3.094-.005.85.18 1.853.552 2.418.9l.168.103-.385-.02c-.766-.038-1.88.27-3.078.853-.361.176-.676.316-.699.312a12.246 12.246 0 0 1-.654-.319Z"/>
+                          </svg>
+                    </button>
+                    <p>Juegos</p>
+                </li>
+                <li class="" id="botonAbrirEventoReligiones">
+                    <button class="botonReligion" id="boton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-collection-fill" viewBox="0 0 16 16">
+                            <path d="M0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3zm2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1z"/>
+                          </svg>
+                    </button>
+                    <p>Religiones</p>
+                </li>
+                <li class="" id="botonAbrirEventoBares">
+                    <button class="botonDiscoteca" id="boton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-heart-fill" viewBox="0 0 16 16">
+                            <path d="M7.293 1.5a1 1 0 0 1 1.414 0L11 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l2.354 2.353a.5.5 0 0 1-.708.707L8 2.207 1.354 8.853a.5.5 0 1 1-.708-.707L7.293 1.5Z"/>
+                            <path d="m14 9.293-6-6-6 6V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9.293Zm-6-.811c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.691 0-5.018Z"/>
+                          </svg>
+                    </button>
+                    <p>Bares</p>
+                </li>
+                <li class="" id="botonIniciarSesion">
+                    <button class="botonInicioSesion" id="s">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
+                            <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                            <path d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0h-7zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492V2.5z"/>
+                          </svg>
+                    </button>
+                    <p>Iniciar Sesión</p>
+                </li>
+                <li class="" id="botonRegistroCuenta">
+                    <button class="botonRegistro" id="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
+                            <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                            <path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z"/>
+                          </svg>
+                    </button>
+                    <p>Registrarse</p>
+                </li>
+                <li id="botonInfo">
+                    <button class="quienesSomos">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                          </svg>
+                    </button>
+                    <p>Información</p>
+                </li>
+                <li id="botonContacto">
+                    <button class="contacto">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-phone-flip" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M11 1H5a1 1 0 0 0-1 1v6a.5.5 0 0 1-1 0V2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a.5.5 0 0 1-1 0V2a1 1 0 0 0-1-1Zm1 13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a.5.5 0 0 0-1 0v2a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-2a.5.5 0 0 0-1 0v2ZM1.713 7.954a.5.5 0 1 0-.419-.908c-.347.16-.654.348-.882.57C.184 7.842 0 8.139 0 8.5c0 .546.408.94.823 1.201.44.278 1.043.51 1.745.696C3.978 10.773 5.898 11 8 11c.099 0 .197 0 .294-.002l-1.148 1.148a.5.5 0 0 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2a.5.5 0 1 0-.708.708l1.145 1.144L8 10c-2.04 0-3.87-.221-5.174-.569-.656-.175-1.151-.374-1.47-.575C1.012 8.639 1 8.506 1 8.5c0-.003 0-.059.112-.17.115-.112.31-.242.6-.376Zm12.993-.908a.5.5 0 0 0-.419.908c.292.134.486.264.6.377.113.11.113.166.113.169 0 .003 0 .065-.13.187-.132.122-.352.26-.677.4-.645.28-1.596.523-2.763.687a.5.5 0 0 0 .14.99c1.212-.17 2.26-.43 3.02-.758.38-.164.713-.357.96-.587.246-.229.45-.537.45-.919 0-.362-.184-.66-.412-.883-.228-.223-.535-.411-.882-.571ZM7.5 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1Z"/>
+                          </svg>
+                    </button>
+                    <p>Contacto </p>
+                </li>
+                <li id="volverInicio">
+                    <button class="volver">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+                          </svg>
+                    </button>
+                    <p>inicio</p>
+                </li>
+            </ul>
+        </div>
+        <div class="negro"></div>
+    </div>
+    <!-- fin del codigo del menu que se abre en mobile -->
+    <!-- ------------------------------------------------- -->
+    <!-- main para abarcar lo principal -->
+    <main class="main" id="main">
+        <br>
+        <!-- carrusel -->
+        <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/imagenes/feria.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="/imagenes/fixture.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="/imagenes/partido.jpg" class="d-block w-100 " alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <br>
+        <!-- seccion de eventos principales -->
+        <section class="seccionEventosPrincipales" id="seccionEventosPrincipales">
+            <h1 class="tituloSeccion" id="eventosDia">Eventos del día</h1>
+            <h6 id="h6">Estos son los eventos destacados que nuestra plataforma te recomienda hoy</h6>
+            <div class="contenedorEventoDelDia" id="contenedorFarruko">
+                <div class="contenedorImagen fondoUno"></div>
+                <div class="contenedorBoton">
+                    <button class="botonMasInfo" id="botonMasInfo">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                    <p>ver más</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                </div>
+            </div>
+            <div class="contenedorEventoDelDia" id="contenedorPlaya">
+                <div class="contenedorImagen fondoDos"></div>
+                <div class="contenedorBoton">
+                    <button class="botonMasInfo" id="botonMasInfo">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                    <p>ver más</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                </div>
+            </div>
+            <div class="contenedorEventoDelDia" id="contenedorFutbol">
+                <div class="contenedorImagen fondoTres"></div>
+                <div class="contenedorBoton">
+                    <button class="botonMasInfo" id="botonMasInfo">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                    <p>ver más</p>
+                </div>
+            </div>
+        </section>
+        <!-- fin de la seccion de los eventos principales -->
+    </main>
+    <!-- modal que sale al darle click al evento 1 -->
+    <div class="modalOscuroUno" id="modalOscuroUno">
+        <div class="contenedorModal">
+            <div class="fotoEventoUno"></div>
+            <div class="infoEvento">
+                <h1 class="tituloEvento">Farruko</h1>
+                <h6 class="descripcionEvento">Descripcion: <br>
+                    <p>Jueves 02/1. Movistar Arena. Bogotá D.C</p>
+                </h6>
+                <h5 class="hora">Hora: 8:00P.M</h5>
+                <div class="contenedorBotonesModal">
+                    <button class="" id="botonConfirmarFarruko">Voy a participar</button>
+                    <button class="" id="botonCancelarFarruko">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Segunod modal -->
+    <div class="modalOscuroDos" id="modalOscuroDos">
+        <div class="contenedorModal">
+            <div class="fotoEventoDos"></div>
+            <div class="infoEvento">
+                <h1 class="tituloEvento">Vista al mar</h1>
+                <h6 class="descripcionEvento">Descripcion: <br>
+                    <p>02/01/24. Playa. Cartagena</p>
+                </h6>
+                <h5 class="hora">Hora de salida: 7:00P.M</h5>
+                <div class="contenedorBotonesModal">
+                    <button class="" id="botonConfirmarPlaya">Voy a participar</button>
+                    <button class="" id="botonCancelarPlaya">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- tercer modal -->
+    <div class="modalOscuroTres" id="modalOscuroTres">
+        <div class="contenedorModal">
+            <div class="fotoEventoTres"></div>
+            <div class="infoEvento">
+                <h1 class="tituloEvento">Partido</h1>
+                <h6 class="descripcionEvento">Descripcion: <br>
+                    <p>Cúcuta vs Atl. Bucaramanga. <br> General Santander</p>
+                </h6>
+                <h5 class="hora">Hora: 6:00P.M</h5>
+                <div class="contenedorBotonesModal">
+                    <button class="" id="botonConfirmarFutbol">Voy a participar</button>
+                    <button class="" id="botonCancelarFutbol">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- contenedor  login -->
+    <main class="mainLogin" id="mainLogin">
+        <div class="contenedorLogin">
+            <h1>Iniciar Sesión</h1>
+            <input type="email" name="" id="inputEmail" class="correoInput" placeholder="Correo Electrónico">
+            <input type="password" name="" id="inputPassword" class="inputContra" placeholder="***********">
+            <button class="botonInicioLogin" id="botonInicioLogin">Iniciar</button>
+            <button class="recuperarContra" id="botonRecuperarCuenta">Recuperar Contraseña</button>
+            <button class="botonCrearCuenta" id="botonCrearCuenta">Crear una nueva cuenta</button>
+        </div>
+    </main>
+    <!-- contenedor Registro -->
+    <main class="mainRegistro" id="mainRegistro">
+        <div class="contenedorLogin contenedorRegistro">
+            <h1>Registrate</h1>
+            <input type="text" name="" id="inputNombre" placeholder="Nombre">
+            <input type="number" name="" id="inputDocumento" placeholder="Documento">
+            <input type="email" name="" id="inputCrearEmail" placeholder="Correo">
+            <input type="password" name="" id="inputCrearContra" placeholder="Contra">
+            <button class="botonCrearCuenta" id="botonCrearCuenta">Crear</button>
+        </div>
+    </main>
+    <!-- parte del codigo donde estan las 9 secciones de la barra de navegacion (tambien del menu del header) -->
+    <!-- ----------------------------------------------------- -->
+    <!-- contenedor deporte -->
+    <main class="mainEvento eventoDeporte" id="mainEventoDeporte">
+        <h1 class="h1-eventos">Deportes del dia</h1>
+        <div class="contenedorTodosElementos">
+            <div class="contenedorPrimerosElementos">
+                <div class="contenedor">
+                    <div class="fondo d1"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoUno">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+                <div class="contenedor">
+                    <div class="fondo d2"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoDos">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="contenedorSegundosElementos">
+                <div class="contenedor">
+                    <div class="fondo d3"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoTres">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+                <div class="contenedor">
+                    <div class="fondo d4"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoCuatro">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="contenedorTercerosElementos">
+                <div class="contenedor">
+                    <div class="fondo d5"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoCinco">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+                <div class="contenedor">
+                    <div class="fondo d6"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoSeis">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- contenedor politica -->
+    <main class="mainEvento eventoPolitica" id="mainEventoPolitica">
+        <h1 class="h1-eventos">Política</h1>
+        <div class="contenedorTodosElementos">
+            <div class="contenedorPrimerosElementos">
+                <div class="contenedor">
+                    <div class="fondo p1"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoPoliticaUno">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+                <div class="contenedor">
+                    <div class="fondo p2"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoPoliticaDos">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="contenedorSegundosElementos">
+                <div class="contenedor">
+                    <div class="fondo p3"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoPoliticaTres">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+                <div class="contenedor">
+                    <div class="fondo p4"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoPoliticaCuatro">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="contenedorTercerosElementos">
+                <div class="contenedor">
+                    <div class="fondo p5"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoPoliticaCinco">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+                <div class="contenedor">
+                    <div class="fondo p6"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoPoliticaSeis">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- contenedor festividades -->
+    <main class="mainEvento eventoFestividades" id="mainEventoFestividades">
+        <h1 class="h1-eventos">Festividades</h1>
+        <div class="contenedorTodosElementos">
+            <div class="contenedorPrimerosElementos">
+                <div class="contenedor">
+                    <div class="fondo f1"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoFestividadesUno">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+                <div class="contenedor">
+                    <div class="fondo f2"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoFestividadesDos">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="contenedorSegundosElementos">
+                <div class="contenedor">
+                    <div class="fondo f3"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoFestividadesTres">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+                <div class="contenedor">
+                    <div class="fondo f4"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoFestividadesCuatro">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="contenedorTercerosElementos">
+                <div class="contenedor">
+                    <div class="fondo f5"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoFestividadesCinco">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+                <div class="contenedor">
+                    <div class="fondo f6"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoFestividadesSeis">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- contenedor  musica-->
+    <main class="mainEvento eventoMusica" id="mainEventoMusica">
+        <h1 class="h1-eventos">Música</h1>
+        <div class="contenedorTodosElementos">
+            <div class="contenedorPrimerosElementos">
+                <div class="contenedor">
+                    <div class="fondo m1"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoMusicaUno">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+                <div class="contenedor">
+                    <div class="fondo m2"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoMusicaDos">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="contenedorSegundosElementos">
+                <div class="contenedor">
+                    <div class="fondo m3"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoMusicaTres">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+                <div class="contenedor">
+                    <div class="fondo m4"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoMusicaCuatro">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="contenedorTercerosElementos">
+                <div class="contenedor">
+                    <div class="fondo m5"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoMusicaCinco">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+                <div class="contenedor">
+                    <div class="fondo m6"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoMusicaSeis">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- contenedor  juegos-->
+    <main class="mainEvento eventoJuegos" id="mainEventoJuegos">
+        <h1 class="h1-eventos">Juegos</h1>
+        <div class="contenedorTodosElementos">
+            <div class="contenedorPrimerosElementos">
+                <div class="contenedor">
+                    <div class="fondo j1"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoJuegosUno">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+                <div class="contenedor">
+                    <div class="fondo j2"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoJuegosDos">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="contenedorSegundosElementos">
+                <div class="contenedor">
+                    <div class="fondo j3"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoJuegosTres">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+                <div class="contenedor">
+                    <div class="fondo j4"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoJuegosCuatro">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="contenedorTercerosElementos">
+                <div class="contenedor">
+                    <div class="fondo j5"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoJuegosCinco">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+                <div class="contenedor">
+                    <div class="fondo j6"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoJuegosSeis">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- contenedor  religiones-->
+    <main class="mainEvento eventoReligiones" id="mainEventoReligion">
+        <h1 class="h1-eventos">Religiones</h1>
+        <div class="contenedorTodosElementos">
+            <div class="contenedorPrimerosElementos">
+                <div class="contenedor">
+                    <div class="fondo r1"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoReligionesUno">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+                <div class="contenedor">
+                    <div class="fondo r2"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoReligionesDos">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="contenedorSegundosElementos">
+                <div class="contenedor">
+                    <div class="fondo r3"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoReligionesTres">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+                <div class="contenedor">
+                    <div class="fondo r4"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoReligionesCuatro">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="contenedorTercerosElementos">
+                <div class="contenedor">
+                    <div class="fondo r5"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoReligionesCinco">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+                <div class="contenedor">
+                    <div class="fondo r6"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoReligionesSeis">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- contenedor  bares-->
+    <main class="mainEvento eventoBares" id="mainEventoBares">
+        <h1 class="h1-eventos">Bares</h1>
+        <div class="contenedorTodosElementos">
+            <div class="contenedorPrimerosElementos">
+                <div class="contenedor">
+                    <div class="fondo b1"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoBaresUno">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+                <div class="contenedor">
+                    <div class="fondo b2"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoBaresDos">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="contenedorSegundosElementos">
+                <div class="contenedor">
+                    <div class="fondo b3"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoBaresTres">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+                <div class="contenedor">
+                    <div class="fondo b4"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoBaresCuatro">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="contenedorTercerosElementos">
+                <div class="contenedor">
+                    <div class="fondo b5"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoBaresCinco">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+                <div class="contenedor">
+                    <div class="fondo b6"></div>
+                    <button class="botonInfoEvento" id="botonVerInfoBaresSeis">
+                        <p>Ver más</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- contenedor  informacion-->
+    <main class="mainEvento eventoInformacion" id="mainInformacion">
+        <h1 class="h1-eventos">Informacion</h1>
+        <hr>
+        <div class="logosInfo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-apple" viewBox="0 0 16 16">
+                <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z"/>
+                <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z"/>
+              </svg>
+            <p>VusEvents </p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-android2" viewBox="0 0 16 16">
+                <path d="m10.213 1.471.691-1.26c.046-.083.03-.147-.048-.192-.085-.038-.15-.019-.195.058l-.7 1.27A4.832 4.832 0 0 0 8.005.941c-.688 0-1.34.135-1.956.404l-.7-1.27C5.303 0 5.239-.018 5.154.02c-.078.046-.094.11-.049.193l.691 1.259a4.25 4.25 0 0 0-1.673 1.476A3.697 3.697 0 0 0 3.5 5.02h9c0-.75-.208-1.44-.623-2.072a4.266 4.266 0 0 0-1.664-1.476ZM6.22 3.303a.367.367 0 0 1-.267.11.35.35 0 0 1-.263-.11.366.366 0 0 1-.107-.264.37.37 0 0 1 .107-.265.351.351 0 0 1 .263-.11c.103 0 .193.037.267.11a.36.36 0 0 1 .112.265.36.36 0 0 1-.112.264Zm4.101 0a.351.351 0 0 1-.262.11.366.366 0 0 1-.268-.11.358.358 0 0 1-.112-.264c0-.103.037-.191.112-.265a.367.367 0 0 1 .268-.11c.104 0 .19.037.262.11a.367.367 0 0 1 .107.265c0 .102-.035.19-.107.264ZM3.5 11.77c0 .294.104.544.311.75.208.204.46.307.76.307h.758l.01 2.182c0 .276.097.51.292.703a.961.961 0 0 0 .7.288.973.973 0 0 0 .71-.288.95.95 0 0 0 .292-.703v-2.182h1.343v2.182c0 .276.097.51.292.703a.972.972 0 0 0 .71.288.973.973 0 0 0 .71-.288.95.95 0 0 0 .292-.703v-2.182h.76c.291 0 .54-.103.749-.308.207-.205.311-.455.311-.75V5.365h-9v6.404Zm10.495-6.587a.983.983 0 0 0-.702.278.91.91 0 0 0-.293.685v4.063c0 .271.098.501.293.69a.97.97 0 0 0 .702.284c.28 0 .517-.095.712-.284a.924.924 0 0 0 .293-.69V6.146a.91.91 0 0 0-.293-.685.995.995 0 0 0-.712-.278Zm-12.702.283a.985.985 0 0 1 .712-.283c.273 0 .507.094.702.283a.913.913 0 0 1 .293.68v4.063a.932.932 0 0 1-.288.69.97.97 0 0 1-.707.284.986.986 0 0 1-.712-.284.924.924 0 0 1-.293-.69V6.146c0-.264.098-.491.293-.68Z"/>
+              </svg>
+        </div>
+        <br>
+        <span class="textoInfo">VusEvents es una compañia dedicada <br> para brindarle la mejor experiencia de <br> usuario a sus clientes. <br>
+            En esta página se vive una experiencia <br> de una página contenedora de eventos <br> en la que se tiene una variedad en las <br> categorias (ver menú) para su interés.
+            <br>  
+        </span>
+    </main>
+    <!-- contenedor  contacto-->
+    <main class="mainEvento eventoContacto" id="mainContacto">
+        <h1 class="h1-eventos">Contacto</h1>
+        <br>
+        <p>Cuentanos que inquietud te ha <br> generado nuestra página</p>
+        <textarea name="" id="textArea" cols="30" rows="5" placeholder="Escribe aqui:"></textarea>
+        <form action=""><button class="botonArea" id="botonArea">Enviar</button></form>
+    </main>
+    <!-- modales que aparecen al darle en ver mas donde dice cada seccion del dia -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainDeporteUno">
+        <button class="botonCerrar" id="cierraDeporteUno">X</button>
+        <h1>Leyendas del fútbol</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento d1"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Una reunión de los mejores jugadores de la historia futbolística
+                </p>
+                <p class="hora">
+                    6:30 PM
+                </p>
+                <p class="fecha">
+                    15-01-2024
+                </p>
+                <p class="lugar">
+                    Estadio El Campín <br> Bogotá
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- segundo deporte -->
+    <main class="mainDeporteDos mainInfoEvento" id="mainDeporteDos">
+        <button class="botonCerrar" id="cierraDeporteDos">X</button>
+        <h1>Boxeo</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento d2"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Juan, se medirá ante un increible rival que viene de ganar, no te lo puedes perder
+                </p>
+                <p class="hora">
+                    10:00 PM
+                </p>
+                <p class="fecha">
+                    21-12-2023
+                </p>
+                <p class="lugar">
+                    Ring de Bóxeo la Candelaria (Armenia)
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- tercer deporte -->
+    <main class="mainDeporteTres mainInfoEvento" id="mainDeporteTres">
+        <button class="botonCerrar" id="cierraDeporteTres">X</button>
+        <h1>Pueden ser tuyas</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento d3"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    La figura Dayro Moreno ha donado estos guayos y te los puedes ganar en un super bingo
+                </p>
+                <p class="hora">
+                    5:00 PM
+                </p>
+                <p class="fecha">
+                    21-12-2023
+                </p>
+                <p class="lugar">
+                    Estadio Palogrande (Manizales)
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- cuarto deporte -->
+    <main class="mainDeporteCuatro mainInfoEvento" id="mainDeporteCuatro">
+        <button class="botonCerrar" id="cierraDeporteCuatro">X</button>
+        <h1>Final de la U.C.L</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento d4"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">Gran Final de la UCL. Adquiere tu entrada + hotel</p>
+                <p class="hora"> 7:50 PM</p>
+                <p class="fecha">07-10-2024</p>
+                <p class="lugar">Berlín, Alemania</p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- quinto deporte -->
+    <main class="mainDeporteCinco mainInfoEvento" id="mainDeporteCinco">
+        <button class="botonCerrar" id="cierraDeporteCinco">X</button>
+        <h1>la Revancha</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento d5"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">Antonio no se quedara de manos cruzadas con respecto a lo que pasó la última vez.</p>
+                <p class="hora">5:00 PM</p>
+                <p class="fecha">27-12-2023</p>
+                <p class="lugar">Movistar Arena (Bogotá)</p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- sexto deporte -->
+    <main class="mainDeporteSeis mainInfoEvento" id="mainDeporteSeis">
+        <button class="botonCerrar" id="cierraDeporteSeis">X</button>
+        <h1>Por el honor</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento d6"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">Varias estrellas de fútbol estarán en un partido benéfico para ayudar a varias fundaciones del país</p>
+                <p class="hora">2:00 PM</p>
+                <p class="fecha">20-11-2023</p>
+                <p class="lugar">Media Torta, Chipre - Manizales</p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- modales de politica comparten todos la clase de deporte para css, importa el id-->
+    <main class="mainDeporteUno mainInfoEvento" id="mainPoliticaUno">
+        <button class="botonCerrar" id="cierraPoliticaUno">X</button>
+        <h1>¿Soy Malo?</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento p1"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Vladimir Putin dará una conferencia de lo que ha tenido que vivir a lo largo de su vida
+                </p>
+                <p class="hora">
+                    8:30 PM
+                </p>
+                <p class="fecha">
+                    19-01-2024
+                </p>
+                <p class="lugar">
+                    Santiago de Cali, Cali
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- politica 2 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainPoliticaDos">
+        <button class="botonCerrar" id="cierraPoliticaDos">X</button>
+        <h1>¿Cambiar de ley?</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento p2"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Mediante algunos estudios se ha demostrado que muchas personas odian la ley, tienes opcion de votar
+                </p>
+                <p class="hora">
+                    8:30 AM - 8:30 PM
+                </p>
+                <p class="fecha">
+                    15-10-2025
+                </p>
+                <p class="lugar">
+                    lUGARES DE VOTACIÓN AUTORIZADOS
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Politica 3 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainPoliticaTres">
+        <button class="botonCerrar" id="cierraPoliticaTres">X</button>
+        <h1>Así es como te roban</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento p3"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    El gran economista David, te ayudará a abrir los ojos ante lo que gastas
+                </p>
+                <p class="hora">
+                    5:30 AM
+                </p>
+                <p class="fecha">
+                    15-12-2023
+                </p>
+                <p class="lugar">
+                    Auditorio U.Nacional de Manizales
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Politica 4 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainPoliticaCuatro">
+        <button class="botonCerrar" id="cierraPoliticaCuatro">X</button>
+        <h1>El otro lado de la vida</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento p4"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Estos dos invitados contarán la experiencia siendo empleado - dueño
+                </p>
+                <p class="hora">
+                    5:30 PM
+                </p>
+                <p class="fecha">
+                    06-01-2024
+                </p>
+                <p class="lugar">
+                    Auditorio U.Nacional de Manizales
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Politica 5 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainPoliticaCinco">
+        <button class="botonCerrar" id="cierraPoliticaCinco">X</button>
+        <h1>No lo vendas</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento p5"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Te contamos que hacer en caso de que te quieran comprar el voto
+                </p>
+                <p class="hora">
+                    6:30 PM
+                </p>
+                <p class="fecha">
+                    01-11-2024
+                </p>
+                <p class="lugar">
+                    Fundadores - Manizales
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Politica 6 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainPoliticaSeis">
+        <button class="botonCerrar" id="cierraPoliticaSeis">X</button>
+        <h1>Superate</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento p6"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Esta es la oportunidad que tienes para ganarte este libro de superacion personal
+                </p>
+                <p class="hora">
+                    6:30 AM
+                </p>
+                <p class="fecha">
+                    30-11-2023
+                </p>
+                <p class="lugar">
+                    Teatro Fundadores - Manizales
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- modales de la parte de festividades -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainFestividadesUno">
+        <button class="botonCerrar" id="cierraFestividadesUno">X</button>
+        <h1>Llega navidad</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento f1"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Esta es la oportunidad que tienes para reunirte con los seres que mas quieres en un viaje por Europa
+                </p>
+                <p class="hora">
+                    6:30 AM (Salidda)
+                </p>
+                <p class="fecha">
+                    23-12-2023 - 06-01-2024
+                </p>
+                <p class="lugar">
+                    Europa
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- festividad 2 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainFestividadesDos">
+        <button class="botonCerrar" id="cierraFestividadesDos">X</button>
+        <h1>Fiesta de halloween</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento f2"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Revive el muerto que llevas dentro
+                </p>
+                <p class="hora">
+                    10:30 PM
+                </p>
+                <p class="fecha">
+                    31-10-2024
+                </p>
+                <p class="lugar">
+                    El Solferino
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Festividad 3 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainFestividadesTres">
+        <button class="botonCerrar" id="cierraFestividadesTres">X</button>
+        <h1>Super Excursion</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento f3"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Viaja al rededor del mundo y conoce a super Mario
+                </p>
+                <p class="hora">
+                    6:30 AM (Salidda)
+                </p>
+                <p class="fecha">
+                    03-02-2024 - 06-02-2024
+                </p>
+                <p class="lugar">
+                    Europa - Asia
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Festividad 4 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainFestividadesCuatro">
+        <button class="botonCerrar" id="cierraFestividadesCuatro">X</button>
+        <h1>Concurso Cervecero</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento f4"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Ganate 2 millones si eres el ultimo en pie
+                </p>
+                <p class="hora">
+                    6:30 PM
+                </p>
+                <p class="fecha">
+                    20-12-2023 - 06-01-2024
+                </p>
+                <p class="lugar">
+                    Universidad De Caldas, bloque Bicentenario
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Festividad 5 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainFestividadesCinco">
+        <button class="botonCerrar" id="cierraFestividadesCinco">X</button>
+        <h1>Año nuevo</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento f5"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Si no tienes familia, reúnete con nosotros y celebra el año nuevo
+                </p>
+                <p class="hora">
+                    9:30 PM
+                </p>
+                <p class="fecha">
+                    31-12-2023
+                </p>
+                <p class="lugar">
+                    Bosque Popular el Prado
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Festividad 6 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainFestividadesSeis">
+        <button class="botonCerrar" id="cierraFestividadesSeis">X</button>
+        <h1>Futbol y Pola</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento f6"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Reunete con tus amigos a ver el encuentro entre once caldas vs nacional
+                </p>
+                <p class="hora">
+                    8:00 PM
+                </p>
+                <p class="fecha">
+                    16-12-2023
+                </p>
+                <p class="lugar">
+                    El Cable - Manizales
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- modales de la parte de Musica-->
+    <main class="mainDeporteUno mainInfoEvento" id="mainMusicaUno">
+        <button class="botonCerrar" id="cierraMusicaUno">X</button>
+        <h1>Las mejores melodías</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento m1"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Reunete con tus amigos a ver el encuentro entre Eladio Carrion y Duki
+                </p>
+                <p class="hora">
+                    8:00 PM
+                </p>
+                <p class="fecha">
+                    01-08-2024
+                </p>
+                <p class="lugar">
+                    El Cable - Manizales
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- musica 2 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainMusicaDos">
+        <button class="botonCerrar" id="cierraMusicaDos">X</button>
+        <h1>Pelea de Gallos</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento m2"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    demuestra tu talento enfrentandote a otras personas
+                    <p class="hora">
+                        8:00 PM
+                    </p>
+                    <p class="fecha">
+                        01-12-2023
+                    </p>
+                    <p class="lugar">
+                        Parque de la Mujer - Manizales
+                    </p>
+                    <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Musica 3 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainMusicaTres">
+        <button class="botonCerrar" id="cierraMusicaTres">X</button>
+        <h1>Muestranos tu talento</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento m3"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Acercate y haz valer tu talento de voz.
+                </p>
+                <p class="hora">
+                    8:00 PM
+                </p>
+                <p class="fecha">
+                    01-02-2024
+                </p>
+                <p class="lugar">
+                    El Cable - Manizales
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Musica 4 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainMusicaCuatro">
+        <button class="botonCerrar" id="cierraMusicaCuatro">X</button>
+        <h1>Musica Clásica</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento m4"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Relajate en una noche de jazz clasico
+                </p>
+                <p class="hora">
+                    8:00 PM
+                </p>
+                <p class="fecha">
+                    01-02-2024
+                </p>
+                <p class="lugar">
+                    Movistar Arena - Bogotá
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Musica 5 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainMusicaCinco">
+        <button class="botonCerrar" id="cierraMusicaCinco">X</button>
+        <h1>Jazz Clásico</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento m5"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    En manizales, queremos profundizar la música clásica
+                </p>
+                <p class="hora">
+                    8:00 PM
+                </p>
+                <p class="fecha">
+                    01-02-2024
+                </p>
+                <p class="lugar">
+                    El Cable - Manizales
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Musica 6 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainMusicaSeis">
+        <button class="botonCerrar" id="cierraMusicaSeis">X</button>
+        <h1>Gran Concierto</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento m6"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Reunete con tus amigos y disfruta de la mejor musica de tu agrado
+                </p>
+                <p class="hora">
+                    8:00 PM
+                </p>
+                <p class="fecha">
+                    01-08-2024
+                </p>
+                <p class="lugar">
+                    El Cable - Manizales
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- modales de la parte de Juegos -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainJuegosUno">
+        <button class="botonCerrar" id="cierraJuegosUno">X</button>
+        <h1>Participa y Gana</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento j1"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Compite en algunos juegos para llevarte este increible mouse
+                </p>
+                <p class="hora">
+                    3:00 PM
+                </p>
+                <p class="fecha">
+                    01-02-2024
+                </p>
+                <p class="lugar">
+                    Universidad Autonoma - Manizales
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Juegos 2 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainJuegosDos">
+        <button class="botonCerrar" id="cierraJuegosDos">X</button>
+        <h1>Lo que debes saber</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento j2"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Toda la información que necesites para tu GTA
+                </p>
+                <p class="hora">
+                    10:00 PM
+                </p>
+                <p class="fecha">
+                    15-03-2024
+                </p>
+                <p class="lugar">
+                    Universidad Autonoma - Manizales
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Juegos 3 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainJuegosTres">
+        <button class="botonCerrar" id="cierraJuegosTres">X</button>
+        <h1>Una reliquia en venta</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento j3"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Ofrece tu mayor monto y gana una consola de los años 90 para completar tu colección
+                </p>
+                <p class="hora">
+                    1:00 PM
+                </p>
+                <p class="fecha">
+                    18-12-2023
+                </p>
+                <p class="lugar">
+                    Chipre - Manizales
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Juegos 4 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainJuegosCuatro">
+        <button class="botonCerrar" id="cierraJuegosCuatro">X</button>
+        <h1>Aquí te ayudarán</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento j4"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Si eres principiante en programación, esta compañía será útil para ti.
+                </p>
+                <p class="hora">
+                    6:00 AM - 6:00PM
+                </p>
+                <p class="fecha">
+                    Dias entre semana
+                </p>
+                <p class="lugar">
+                    Manizales
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Juegos 5 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainJuegosCinco">
+        <button class="botonCerrar" id="cierraJuegosCinco">X</button>
+        <h1>Participa y Gana</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento j5"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Compite en este juego y demuestra quién es el mejor de tu País
+                </p>
+                <p class="hora">
+                    2:00 PM
+                </p>
+                <p class="fecha">
+                    01-12-2025
+                </p>
+                <p class="lugar">
+                    Ciudad de México - México
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Juego 6 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainJuegosSeis">
+        <button class="botonCerrar" id="cierraJuegosSeis">X</button>
+        <h1>Participa y Gana</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento j6"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Participa de algunos regalos que hará play station por su aniversario
+                </p>
+                <p class="hora">
+                    3:00 PM
+                </p>
+                <p class="fecha">
+                    11-11-2024
+                </p>
+                <p class="lugar">
+                    California - U.S.A
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Modales de la parte de religiones -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainReligionesUno">
+        <button class="botonCerrar" id="cierraReligionesUno">X</button>
+        <h1>Mira algo nuevo</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento r1"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Participa de algunos eventos que proporcionan algunas religiones distintas
+                </p>
+                <p class="hora">
+                    3:00 AM
+                </p>
+                <p class="fecha">
+                    11-11-2024
+                </p>
+                <p class="lugar">
+                    Egipto
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Religion 2 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainReligionesDos">
+        <button class="botonCerrar" id="cierraReligionesDos">X</button>
+        <h1>Mira algo nuevo</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento r2"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Participa de algunos eventos que proporcionan algunas religiones distintas
+                </p>
+                <p class="hora">
+                    3:00 AM
+                </p>
+                <p class="fecha">
+                    11-11-2024
+                </p>
+                <p class="lugar">
+                    Egipto
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Religion 3 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainReligionesTres">
+        <button class="botonCerrar" id="cierraReligionesTres">X</button>
+        <h1>Mira algo nuevo</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento r3"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Participa de algunos eventos que proporcionan algunas religiones distintas
+                </p>
+                <p class="hora">
+                    3:00 AM
+                </p>
+                <p class="fecha">
+                    11-11-2024
+                </p>
+                <p class="lugar">
+                    Egipto
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Religion 4 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainReligionesCuatro">
+        <button class="botonCerrar" id="cierraReligionesCuatro">X</button>
+        <h1>Mira algo nuevo</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento r4"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Participa de algunos eventos que proporcionan algunas religiones distintas
+                </p>
+                <p class="hora">
+                    3:00 AM
+                </p>
+                <p class="fecha">
+                    11-11-2024
+                </p>
+                <p class="lugar">
+                    Egipto
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Religion 5 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainReligionesCinco">
+        <button class="botonCerrar" id="cierraReligionesCinco">X</button>
+        <h1>Mira algo nuevo</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento r5"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Participa de algunos eventos que proporcionan algunas religiones distintas
+                </p>
+                <p class="hora">
+                    3:00 AM
+                </p>
+                <p class="fecha">
+                    11-11-2024
+                </p>
+                <p class="lugar">
+                    Egipto
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Religion 6 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainReligionesSeis">
+        <button class="botonCerrar" id="cierraReligionesSeis">X</button>
+        <h1>Mira algo nuevo</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento r6"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Participa de algunos eventos que proporcionan algunas religiones distintas
+                </p>
+                <p class="hora">
+                    3:00 AM
+                </p>
+                <p class="fecha">
+                    11-11-2024
+                </p>
+                <p class="lugar">
+                    Egipto
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- modales del evento bares -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainBaresUno">
+        <button class="botonCerrar" id="cierraBaresUno">X</button>
+        <h1>Ven y Disfruta</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento b1"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Distraete y divierte en este increible bar
+                </p>
+                <p class="hora">
+                    10:00 PM
+                </p>
+                <p class="fecha">
+                    23-11-2023
+                </p>
+                <p class="lugar">
+                    Milán - Manizales
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Bares 2 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainBaresDos">
+        <button class="botonCerrar" id="cierraBaresDos">X</button>
+        <h1>Ven y Disfruta</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento b2"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Distraete y divierte en este increible bar
+                </p>
+                <p class="hora">
+                    10:00 PM
+                </p>
+                <p class="fecha">
+                    23-11-2023
+                </p>
+                <p class="lugar">
+                    Milán - Manizales
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Bares 3 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainBaresTres">
+        <button class="botonCerrar" id="cierraBaresTres">X</button>
+        <h1>Ven y Disfruta</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento b3"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Distraete y divierte en este increible bar
+                </p>
+                <p class="hora">
+                    10:00 PM
+                </p>
+                <p class="fecha">
+                    23-11-2023
+                </p>
+                <p class="lugar">
+                    Milán - Manizales
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Bares 4 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainBaresCuatro">
+        <button class="botonCerrar" id="cierraBaresCuatro">X</button>
+        <h1>Ven y Disfruta</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento b4"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Distraete y divierte en este increible bar
+                </p>
+                <p class="hora">
+                    10:00 PM
+                </p>
+                <p class="fecha">
+                    23-11-2023
+                </p>
+                <p class="lugar">
+                    Milán - Manizales
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Bares 5 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainBaresCinco">
+        <button class="botonCerrar" id="cierraBaresCinco">X</button>
+        <h1>Ven y Disfruta</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento b5"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Distraete y divierte en este increible bar
+                </p>
+                <p class="hora">
+                    10:00 PM
+                </p>
+                <p class="fecha">
+                    23-11-2023
+                </p>
+                <p class="lugar">
+                    Milán - Manizales
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Bares 6 -->
+    <main class="mainDeporteUno mainInfoEvento" id="mainBaresSeis">
+        <button class="botonCerrar" id="cierraBaresSeis">X</button>
+        <h1>Ven y Disfruta</h1>
+        <div class="contenedorEventos">
+            <div class="fondoEvento b6"></div>
+            <div class="contenedorInfo">
+                <h4>Informacion:</h4>
+                <p class="info">
+                    Distraete y divierte en este increible bar
+                </p>
+                <p class="hora">
+                    10:00 PM
+                </p>
+                <p class="fecha">
+                    23-11-2023
+                </p>
+                <p class="lugar">
+                    Milán - Manizales
+                </p>
+                <button class="boton-participar" id="botonParticipar">
+                    Participar
+                </button>
+            </div>
+        </div>
+    </main>
+    <!-- Fin del apartado de los modales de cada una de las secciones -->
+    <!-- parte final o creditos de la pagina (footer) -->
+    <footer id="footer">
+        <h1 class="titulo">VusEvents</h1>
+        <P>Somos una empresa que hace lo que hace con pasión y siempre con la creatividad en alto</P>
+        <div class="contenedorBotonesFooter">
+            <button>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+              </svg>
+            </button>
+            <button>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
+                    <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
+                  </svg>
+            </button>
+            <button>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                    <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/>
+                  </svg>
+            </button>
+            <button>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tiktok" viewBox="0 0 16 16">
+                    <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"/>
+                  </svg>
+            </button>
+            <button>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                    <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+                  </svg>
+            </button>
+            <button>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-discord" viewBox="0 0 16 16">
+                    <path d="M13.545 2.907a13.227 13.227 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.19 12.19 0 0 0-3.658 0 8.258 8.258 0 0 0-.412-.833.051.051 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032c.001.014.01.028.021.037a13.276 13.276 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019c.308-.42.582-.863.818-1.329a.05.05 0 0 0-.01-.059.051.051 0 0 0-.018-.011 8.875 8.875 0 0 1-1.248-.595.05.05 0 0 1-.02-.066.051.051 0 0 1 .015-.019c.084-.063.168-.129.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.052.052 0 0 1 .053.007c.08.066.164.132.248.195a.051.051 0 0 1-.004.085 8.254 8.254 0 0 1-1.249.594.05.05 0 0 0-.03.03.052.052 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.235 13.235 0 0 0 4.001-2.02.049.049 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.034.034 0 0 0-.02-.019Zm-8.198 7.307c-.789 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612Zm5.316 0c-.788 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612Z"/>
+                  </svg>
+            </button>
+        </div>
+    </footer>
+    <!-- scripts para la pagina -->
+    <script src="/scripts-celular/responsive.js" defer></script>
+
+    <!-- script para abrir la seccion desde el menu responsivo y el modo oscuro de la pagina-->
+    <script src="scripts-celular/abrir-menu.js"></script>
+
+    <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+
+<!-- falta la parte de escritorio-->
+
+
+<!-- hacer un console .log con el valor de lo que escriba e usuario -->
+
+<!-- lo del modo oscuro esta en abrir menu js -->
